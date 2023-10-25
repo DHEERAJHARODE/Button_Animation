@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated button</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            widows: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        body{
+            background-image: url(https://static.vecteezy.com/system/resources/previews/021/171/659/large_2x/colorful-abstract-wallpaper-modern-background-ai-generated-free-photo.jpg);
+            background-repeat: no-repeat;
+            background-position: fixed;
+            background-size: cover;
+        }
+        button{
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            background-image: linear-gradient(rgb(46, 253, 139),rgb(82, 241, 255));
+            color: black;
+            border:none;
+        }
+        .hidden{
+            display: none;
+        }
+        .anime{
+            animation-name: move;
+            position: relative;
+            top:-500px;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            display: block;
+        }
+        @keyframes move {
+            /* from{
+                top: -500px;
+            }
+            to{
+                top: 0;
+            } */
+            0%{top:-500px;}
+            25%{top:-150px}
+            50%{top: 0;}
+            60%{top:-90px;}
+            70%{top:0;}
+            80%{top: -50px;}
+            100%{top: 0}
+        }
+        @media(max-width: 768px){
+            .container{
+                width: 100vw;
+                height: 100vh;
+            }
+            button{
+                font-size: 20px;
+                box-shadow: 2px 2px 20px white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div><button class="btn">View</button></div>
+        <button class="hidden">I'm Here</button>
+    </div>
+    <script>
+        const hiddenbtn=document.querySelector(".hidden");
+        const clickbtn=document.querySelector(".btn");
+        clickbtn.addEventListener('click',()=>{
+            if(hiddenbtn.classList.contains('anime')){
+                clickbtn.textContent="View";
+                hiddenbtn.classList.remove('anime');
+            }
+            else{
+                clickbtn.textContent="Remove";
+                hiddenbtn.classList.add('anime');
+            }
+        });
+    </script>
+</body>
+</html>
