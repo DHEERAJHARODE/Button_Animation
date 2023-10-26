@@ -35,14 +35,27 @@
             border:none;
         }
         .hidden{
-            display: none;
+            animation-name: remove;
+            position: relative;
+            top: 0;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+        @keyframes remove {
+            from{
+                top: 0;
+            }
+            to{
+                top: -500px;
+            }
         }
         .anime{
             animation-name: move;
             position: relative;
             top:-500px;
             animation-duration: 1s;
-            animation-timing-function: linear;
+            animation-timing-function: ease-out;
             animation-fill-mode: forwards;
             display: block;
         }
@@ -54,11 +67,12 @@
                 top: 0;
             } */
             0%{top:-500px;}
-            25%{top:-150px}
-            50%{top: 0;}
-            60%{top:-90px;}
-            70%{top:0;}
-            80%{top: -50px;}
+            40%{top:0}
+            50%{top: -100px;}
+            60%{top:0;}
+            70%{top:-90px;}
+            80%{top: 0;}
+            90%{top: -10px;}
             100%{top: 0}
         }
         @media(max-width: 768px){
@@ -89,6 +103,7 @@
             else{
                 clickbtn.textContent="Remove";
                 hiddenbtn.classList.add('anime');
+                hiddenbtn.classList.add('hidden');
             }
         });
     </script>
